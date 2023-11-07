@@ -1,16 +1,19 @@
-# inventory_app
+# Tugas 7
+#####  Apa perbedaan utama antara *stateless* dan *stateful widget* dalam konteks pengembangan aplikasi Flutter?
+- Perbedaan utama antara `StatelessWidget` dan `StatefulWidget` dalam pengembangan aplikasi Flutter terletak pada pengelolaan keadaan atau **state**. `StatelessWidget` adalah tipe *widget* yang tidak memiliki keadaan internal yang dapat berubah selama siklus hidup widget. Dalam konteks ini, mereka digunakan untuk membangun komponen tampilan yang statis, artinya tampilan tersebut tidak perlu merespon terhadap perubahan data atau *input*. Contohnya, sebuah widget yang menampilkan teks atau ikon statis akan ideal sebagai `StatelessWidget` karena tampilannya tidak berubah seiring waktu.
 
-A new Flutter project.
+- Di sisi lain, `StatefulWidget` adalah tipe *widget* yang dapat memiliki keadaan internal yang dapat berubah. Mereka dirancang untuk mengakomodasi tampilan yang perlu merespon dengan data dinamis atau *input* pengguna. Ketika data atau *input* berubah, `StatefulWidget` dapat memperbarui tampilan sesuai dengan perubahan tersebut. Contoh penggunaan `StatefulWidget` adalah dalam pembuatan formulir, daftar yang dapat di-*scroll*, atau tampilan yang bergantung pada perubahan data, contohnya adalah jumlah pesanan. Dengan `StatefulWidget`, kita dapat menjaga dan memperbarui *state* atau keadaan internal widget sesuai dengan perkembangan dalam aplikasi, yang menjadikannya fleksibel untuk menciptakan tampilan yang responsif dan dinamis.
 
-## Getting Started
+#####  Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jelaskan fungsinya masing-masing.
+- `MyApp` adalah *root widget* dari aplikasi. Ini bertanggung jawab untuk mengatur tema dan judul aplikasi. Dalam contoh ini, tema aplikasi disesuaikan dengan warna indigo, dan judul aplikasi diatur sebagai "Inventory App" `MyApp` juga merupakan tempat dimulainya seluruh aplikasi Flutter.
 
-This project is a starting point for a Flutter application.
+- `MyHomePage` adalah *widget* yang memunculkan tampilan beranda aplikasi. Di dalamnya, pengguna akan melihat judul "Inventory App" yang terletak di bagian atas, dan di bawahnya, daftar tombol yang dapat ditekan. Tombol-tombol ini dihasilkan menggunakan `GridView`, sehingga tampilan beranda rapi dan terorganisir. `MyHomePage` berperan sebagai tampilan utama yang memuat daftar tombol.
 
-A few resources to get you started if this is your first Flutter project:
+- `ShopCard` adalah widget kustom yang digunakan untuk membuat kartu yang menampilkan ikon dan teks untuk setiap tombol dalam daftar. `ShopCard` digunakan untuk mengatur tampilan dan perilaku setiap item di Inventory App secara terpisah. Selain itu, `ShopCard` juga berfungsi untuk menentukan warna latar belakang kartu berdasarkan nama item, sehingga tombol-tombol memiliki tampilan yang berbeda-beda (di sini, saya menampilkan warna merah, hijau, dan biru pada masing-masing `ShopCard`).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+##### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
+- Implementasi checklist tugas ini dimulai dengan pembuatan aplikasi Flutter dengan perintah `flutter create inventory_app`. Langkah pertama adalah menggunakan widget `MyApp` sebagai *root widget* untuk mengonfigurasi tema dan judul aplikasi. Dalam hal ini, tema aplikasi diatur dengan warna indigo, dan judul "Inventory App" ditetapkan sebagai judul aplikasi. Selanjutnya, dalam *widget* `MyHomePage`, daftar item-item dalam aplikasi Invetory App yang direpresentasikan oleh model `ShopItem` didefinisikan dalam sebuah `list`. Model `ShopItem` ini memuat dua informasi, yaitu nama item dan ikon yang akan ditampilkan pada masing-masing tombol.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- *Widget* `GridView` digunakan dalam tampilan beranda `MyHomePage` untuk menampilkan setiap item toko sebagai `ShopCard`. Setiap `ShopCard` adalah *widget* yang berfungsi untuk membuat kartu dengan menampilkan ikon dan teks untuk masing-masing tombol. Selain itu, `ShopCard` juga mengatur warna *background* kartu berdasarkan nama item yang bersesuaian. Ini menciptakan tampilan yang berbeda-beda untuk setiap tombol, sesuai dengan *requirement* bonus untuk tugas ini.
+
+- Ketika pengguna menekan salah satu kartu, metode `_showSnackBar` di dalam `ShopCard` dipanggil, menghasilkan pesan `Snackbar` sesuai dengan tombol yang ditekan. Contohnya, jika tombol "Lihat Item" ditekan, pesan `Snackbar` akan menampilkan informasi "Kamu telah menekan tombol Lihat Item."
